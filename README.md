@@ -2,173 +2,154 @@
 
 ## Getting Started
 
-### 1. Клонировать репозиторий:
- * Через SSH:
-   ```bash
-   git clone git@github.com:AveryOn/nodex-desktop.git
-   cd nodex-desktop
-   ````
+ ### 1. Клонировать репозиторий:
+  * Через SSH:
+    ```bash
+    git clone git@github.com:AveryOn/nodex-desktop.git
+    cd nodex-desktop
+    ````
 
- * Через HTTPS:
-   ```bash
-   git clone https://github.com/AveryOn/nodex-desktop.git
-   cd nodex-desktop
-   ```
- ---
+  * Через HTTPS:
+    ```bash
+    git clone https://github.com/AveryOn/nodex-desktop.git
+    cd nodex-desktop
+    ```
+  ---
 
-### 2. Переключиться от `main`:
- **`main` считается релизной веткой. Разработка напрямую в `main` без pull request запрещена!**
+ ### 2. Переключиться от `main`:
+  **`main` считается релизной веткой. Разработка напрямую в `main` без pull request запрещена!**
 
- * Перед началом работы создать отдельную рабочую ветку:
- ```bash
- git checkout main
- git pull origin main
- git checkout -b dev/<short-task-name>
- ```
+  * Перед началом работы создать отдельную рабочую ветку:
+    ```bash
+    git checkout main
+    git pull origin main
+    git checkout -b feat/<short-task-name>
+    ```
 
- * Пример:
- ```bash
- git checkout -b feat/{num-if-exists}-<any-branch-name>
- ```
+  * Пример для новой фичи:
+    ```bash
+    git checkout -b feat/{num-if-exists}-<any-branch-name>
+    ```
 
- * Для багфикса:
+  * Пример для багфикса:
+    ```bash
+    git checkout -b fix/{num-if-exists}-<any-branch-name>
+    ```
+  ---
 
- ```bash
- git checkout -b fix/{num-if-exists}-<any-branch-name>
- ```
- ---
+ ### 3. Установить зависимости:
 
-### 3. Установить зависимости
+  ```bash
+  npm install
+  ```
 
-```bash
-npm install
-```
+  _После установки автоматически выполнится:_
 
-После установки автоматически выполнится:
+    ```bash
+    npm run rebuild:native
+    ```
 
-```bash
-npm run rebuild:native
-```
+   > _Это пересобирает `better-sqlite3` под Electron_
 
-Это пересобирает `better-sqlite3` под Electron.
+  ---
 
----
+ ### 4. Запустить локальную разработку:
+  ```bash
+  npm run dev
+  ```
 
-### 4. Запустить локальную разработку
+  > Команда запускает Electron-приложение в development mode через `electron-vite`.
+  ---
 
-```bash
-npm run dev
-```
+ ### 5. Проверить типы:
 
-Команда запускает Electron-приложение в development mode через `electron-vite`.
+  ```bash
+  npm run typecheck
+  ```
 
----
+  * Проверяет отдельно:
 
-### 5. Проверить типы
+    ```bash
+    npm run typecheck:node
+    npm run typecheck:web
+    ```
 
-```bash
-npm run typecheck
-```
+  ---
 
-Проверяет отдельно:
+ ### 6. Проверить lint:
 
-```bash
-npm run typecheck:node
-npm run typecheck:web
-```
+  ```bash
+  npm run lint
+  ```
+  ---
 
----
+ ### 7. Сгенерировать миграции при изменении DB schema:
 
-### 6. Проверить lint
+  * Если изменялись файлы схемы Drizzle:
 
-```bash
-npm run lint
-```
+    ```bash
+    npm run db:generate
+    ```
+  ---
 
----
+ ### 8. Проверить production build локально:
 
-### 7. Сгенерировать миграции при изменении DB schema
+  ```bash
+  npm run build
+  npm run start
+  ```
 
-Если изменялись файлы схемы Drizzle:
+  - `build` собирает приложение в `out/`.
+  - `start` запускает собранную версию через `electron-vite preview`.
 
-```bash
-npm run db:generate
-```
+  ---
 
----
+ ### 9. Собрать desktop build:
 
-### 8. Проверить production build локально
+  - Для быстрой unpacked-сборки:
 
-```bash
-npm run build
-npm run start
-```
+    ```bash
+    npm run build:unpack
+    ```
 
-`build` собирает приложение в `out/`.
+  - Для текущей платформы:
 
-`start` запускает собранную версию через `electron-vite preview`.
+    ```bash
+    npm run dist
+    ```
 
----
+  - Для конкретной ОС:
 
-### 9. Собрать desktop build
-
-Для быстрой unpacked-сборки:
-
-```bash
-npm run build:unpack
-```
-
-Для текущей платформы:
-
-```bash
-npm run dist
-```
-
-Для конкретной ОС:
-
-```bash
-npm run build:linux
-npm run build:win
-npm run build:mac
-```
-
----
+    ```bash
+    npm run build:linux
+    npm run build:win
+    npm run build:mac
+    ```
+  ---
 
 ## Branch policy
+ - `main` - релизная ветка.
+ - В `main` нельзя коммитить напрямую.
+ - Рабочие ветки создаются от актуального `main`:
+   ```bash
+   git checkout main
+   git pull origin main
+   git checkout -b feat/<short-task-name>
+   ```
 
-`main` — релизная ветка.
+ - После завершения работы ветка отправляется в remote:
+   ```bash
+   git push -u origin feat/<short-task-name>
+   ```
+ - Дальше создается Pull Request в `main`.
+ - Перед Pull Request обязательно выполнить:
+   ```bash
+   npm run typecheckё
+   npm run lint
+   npm run build
+   ```
 
-В `main` нельзя коммитить напрямую.
-
-Рабочие ветки создаются от актуального `main`:
-
-```bash
-git checkout main
-git pull origin main
-git checkout -b dev/<task-name>
-```
-
-После завершения работы ветка отправляется в remote:
-
-```bash
-git push -u origin dev/<task-name>
-```
-
-Дальше создается Pull Request в `main`.
-
-Перед Pull Request обязательно выполнить:
-
-```bash
-npm run typecheck
-npm run lint
-npm run build
-```
-
-```
-```
-
-
-## PACKAGE SCRIPTS:
+## PACKAGE SCRIPTS (Полное описание всех скриптов):
 
  ### `format`:
   Форматирует весь проект через Prettier.
