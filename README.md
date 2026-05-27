@@ -9,7 +9,7 @@
    cd nodex-desktop
    ````
 
- * Если используется HTTPS:
+ * Через HTTPS:
    ```bash
    git clone https://github.com/AveryOn/nodex-desktop.git
    cd nodex-desktop
@@ -17,29 +17,25 @@
  ---
 
 ### 2. Переключиться от `main`:
+ **`main` считается релизной веткой. Разработка напрямую в `main` без pull request запрещена!**
 
- `main` считается релизной веткой. Разработка напрямую в `main` запрещена.
-
- Перед началом работы создать отдельную рабочую ветку:
-
+ * Перед началом работы создать отдельную рабочую ветку:
  ```bash
  git checkout main
  git pull origin main
  git checkout -b dev/<short-task-name>
  ```
 
- Пример:
-
+ * Пример:
  ```bash
- git checkout -b dev/sqlite-drizzle-setup
+ git checkout -b feat/{num-if-exists}-<any-branch-name>
  ```
 
- Для багфикса:
+ * Для багфикса:
 
  ```bash
- git checkout -b fix/<short-bug-name>
+ git checkout -b fix/{num-if-exists}-<any-branch-name>
  ```
-
  ---
 
 ### 3. Установить зависимости
