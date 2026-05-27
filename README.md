@@ -1,6 +1,6 @@
 # nodex
 
-## Getting Started
+## GETTING STARTED
 
  ### 1. Клонировать репозиторий:
   * Через SSH:
