@@ -1,6 +1,7 @@
-import './assets/main.css'
+import '@renderer/styles/normalize.css'
 
 import { createApp } from 'vue'
-import App from './App.vue'
+import App from '@renderer/App.vue'
+import router from '@renderer/router'
 
-createApp(App).mount('#app')
+createApp(App).use(router).mount('#app')

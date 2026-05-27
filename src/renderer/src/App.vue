@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 import Versions from './components/Versions.vue'
 
 const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
@@ -23,4 +23,12 @@ const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
     </div>
   </div>
   <Versions />
+</template> -->
+
+<script setup lang="ts"></script>
+
+<template>
+  <router-view></router-view>
 </template>
+
+<style scoped></style>
