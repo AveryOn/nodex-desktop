@@ -1,5 +1,177 @@
 # nodex
 
+## Getting Started
+
+### 1. Клонировать репозиторий:
+ * Через SSH:
+   ```bash
+   git clone git@github.com:AveryOn/nodex-desktop.git
+   cd nodex-desktop
+   ````
+
+ * Если используется HTTPS:
+   ```bash
+   git clone https://github.com/AveryOn/nodex-desktop.git
+   cd nodex-desktop
+   ```
+ ---
+
+### 2. Переключиться от `main`:
+
+ `main` считается релизной веткой. Разработка напрямую в `main` запрещена.
+
+ Перед началом работы создать отдельную рабочую ветку:
+
+ ```bash
+ git checkout main
+ git pull origin main
+ git checkout -b dev/<short-task-name>
+ ```
+
+ Пример:
+
+ ```bash
+ git checkout -b dev/sqlite-drizzle-setup
+ ```
+
+ Для багфикса:
+
+ ```bash
+ git checkout -b fix/<short-bug-name>
+ ```
+
+ ---
+
+### 3. Установить зависимости
+
+```bash
+npm install
+```
+
+После установки автоматически выполнится:
+
+```bash
+npm run rebuild:native
+```
+
+Это пересобирает `better-sqlite3` под Electron.
+
+---
+
+### 4. Запустить локальную разработку
+
+```bash
+npm run dev
+```
+
+Команда запускает Electron-приложение в development mode через `electron-vite`.
+
+---
+
+### 5. Проверить типы
+
+```bash
+npm run typecheck
+```
+
+Проверяет отдельно:
+
+```bash
+npm run typecheck:node
+npm run typecheck:web
+```
+
+---
+
+### 6. Проверить lint
+
+```bash
+npm run lint
+```
+
+---
+
+### 7. Сгенерировать миграции при изменении DB schema
+
+Если изменялись файлы схемы Drizzle:
+
+```bash
+npm run db:generate
+```
+
+---
+
+### 8. Проверить production build локально
+
+```bash
+npm run build
+npm run start
+```
+
+`build` собирает приложение в `out/`.
+
+`start` запускает собранную версию через `electron-vite preview`.
+
+---
+
+### 9. Собрать desktop build
+
+Для быстрой unpacked-сборки:
+
+```bash
+npm run build:unpack
+```
+
+Для текущей платформы:
+
+```bash
+npm run dist
+```
+
+Для конкретной ОС:
+
+```bash
+npm run build:linux
+npm run build:win
+npm run build:mac
+```
+
+---
+
+## Branch policy
+
+`main` — релизная ветка.
+
+В `main` нельзя коммитить напрямую.
+
+Рабочие ветки создаются от актуального `main`:
+
+```bash
+git checkout main
+git pull origin main
+git checkout -b dev/<task-name>
+```
+
+После завершения работы ветка отправляется в remote:
+
+```bash
+git push -u origin dev/<task-name>
+```
+
+Дальше создается Pull Request в `main`.
+
+Перед Pull Request обязательно выполнить:
+
+```bash
+npm run typecheck
+npm run lint
+npm run build
+```
+
+```
+```
+
+
 ## PACKAGE SCRIPTS:
 
  ### `format`:
@@ -177,5 +349,5 @@
    npm run build && electron-builder
    ```
 
-  > Использовать для финальной сборки приложения.
-  ---
+  > Использовать для финальной сборки приложения
+ ---
