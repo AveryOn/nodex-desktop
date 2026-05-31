@@ -6,6 +6,14 @@
   "author": "example.com",
   "type": "module",
   "homepage": "https://electron-vite.org",
+  "build": {
+    "extraResources": [
+      {
+        "from": "drizzle",
+        "to": "drizzle"
+      }
+    ]
+  },
   "scripts": {
     "format": "prettier --write .",
     "lint": "eslint --cache .",
@@ -37,6 +45,7 @@
     "@electron-toolkit/tsconfig": "^2.0.0",
     "@electron/rebuild": "4.0.3",
     "@playwright/test": "1.60.0",
+    "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^22.19.1",
     "@vitejs/plugin-vue": "6.0.7",
     "drizzle-kit": "0.31.10",

@@ -25,7 +25,7 @@ npm i -D drizzle-kit electron-builder @electron/rebuild
 } -->
 <!-- ``` -->
 
-# 4. Настроить структуру:
+<!-- # 4. Настроить структуру:
 
 ```txt
 src/main/db/
@@ -33,30 +33,30 @@ src/main/ipc/
 src/preload/
 src/renderer/src/
 drizzle/
-```
+``` -->
 
-# 5. Создать `drizzle.config.ts`.
+<!-- # 5. Создать `drizzle.config.ts`. -->
 
-# 6. Описать первую SQLite schema в `src/main/db/schema`.
+<!-- # 6. Описать первую SQLite schema в `src/main/db/schema`. -->
 
-# 7. Сделать `src/main/db/client.ts`:
+<!-- # 7. Сделать `src/main/db/client.ts`: -->
 
-- `better-sqlite3`
+<!-- - `better-sqlite3`
 - `drizzle`
 - singleton connection
 - путь БД через `app.getPath('userData')`
-- файл: `userData/data/nodex.sqlite`
+- файл: `userData/data/nodex.sqlite` -->
 
-# 8. Добавить SQLite pragmas:
+<!-- # 8. Добавить SQLite pragmas:
 
 - `journal_mode = WAL`
-- `foreign_keys = ON`
+- `foreign_keys = ON` -->
 
-# 9. Сделать runtime migrations:
-
+<!-- # 9. Сделать runtime migrations: -->
+<!--
 - `src/main/db/migrate.ts`
 - запускать при старте app
-- migrations читать из `drizzle/`
+- migrations читать из `drizzle/` -->
 
 # 10. Добавить IPC слой:
 
