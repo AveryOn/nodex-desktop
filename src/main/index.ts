@@ -1,10 +1,10 @@
 import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
-import icon from '../../resources/icon.png?asset'
-import { initDatabase } from './db/client'
-import { runMigrations } from './db/migrate'
-import { registerIpcHandlers } from './ipc'
+import icon from '~/../resources/icon.png?asset'
+import { initDatabase } from '~/main/db/client'
+import { runMigrations } from '~/main/db/migrate'
+import { registerIpcHandlers } from '~/main/ipc'
 
 function createWindow(): void {
   // Create the browser window.
@@ -15,8 +15,10 @@ function createWindow(): void {
     height: 1080,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
-      preload: join(__dirname, '../preload/index.js'),
-      sandbox: false
+      preload: join(__dirname, '../preload/index.mjs'),
+      sandbox: false,
+      contextIsolation: true,
+      nodeIntegration: false
     }
   })
 

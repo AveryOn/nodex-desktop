@@ -1,5 +1,10 @@
 <script setup lang="ts">
-// window.nodex.todos.list()
+import { onMounted } from 'vue'
+
+onMounted(async () => {
+  const a = await window.nodex.todos.list()
+  console.debug(a)
+})
 </script>
 
 <template>
