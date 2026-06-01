@@ -57,11 +57,11 @@ drizzle/
 - `src/main/db/migrate.ts`
 - запускать при старте app
 - migrations читать из `drizzle/` -->
-
+<!--
 # 10. Добавить IPC слой:
 
 - handlers в `src/main/ipc`
-- renderer не должен напрямую трогать БД
+- renderer не должен напрямую трогать БД -->
 
 # 11. Настроить preload:
 

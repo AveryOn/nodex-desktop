@@ -25,8 +25,8 @@
 </template>
 
 <script setup lang="ts">
-import MenuPanel from '@renderer/components/MenuPanel.vue'
-import BaseLayout from '@renderer/layouts/BaseLayout.vue'
+import MenuPanel from '~/renderer/src/components/MenuPanel.vue'
+import BaseLayout from '~/renderer/src/layouts/BaseLayout.vue'
 import { ref } from 'vue'
 
 const isAsideOpen = ref(false)

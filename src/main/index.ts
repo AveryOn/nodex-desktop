@@ -4,6 +4,7 @@ import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 import { initDatabase } from './db/client'
 import { runMigrations } from './db/migrate'
+import { registerIpcHandlers } from './ipc'
 
 function createWindow(): void {
   // Create the browser window.
@@ -44,6 +45,7 @@ function createWindow(): void {
 app.whenReady().then(() => {
   initDatabase()
   runMigrations()
+  registerIpcHandlers()
   // Set app user model id for windows
   electronApp.setAppUserModelId('com.electron')
 

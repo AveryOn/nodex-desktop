@@ -1,8 +1,8 @@
-import AuthPage from '@renderer/pages/auth/AuthPage.vue'
-import DairyPage from '@renderer/pages/domain/DairyPage.vue'
-import DashboardPage from '@renderer/pages/domain/DashboardPage.vue'
-import IndexPage from '@renderer/pages/domain/IndexPage.vue'
-import ProfilePage from '@renderer/pages/domain/ProfilePage.vue'
+import AuthPage from '~/renderer/src/pages/auth/AuthPage.vue'
+import DairyPage from '~/renderer/src/pages/domain/DairyPage.vue'
+import DashboardPage from '~/renderer/src/pages/domain/DashboardPage.vue'
+import IndexPage from '~/renderer/src/pages/domain/IndexPage.vue'
+import ProfilePage from '~/renderer/src/pages/domain/ProfilePage.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 export enum RoutePath {

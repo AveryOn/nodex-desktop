@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouteName } from '@renderer/router'
+import { RouteName } from '~/renderer/src/router'
 </script>
 
 <template>

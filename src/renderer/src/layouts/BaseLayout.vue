@@ -32,7 +32,7 @@ const emit = defineEmits<{
   (e: 'toggle', value: boolean): void
 }>()
 
-const layoutRef = ref<HTMLElement | null>(null)
+// const layoutRef = ref<HTMLElement | null>(null)
 const isMobile = ref(false)
 const innerExpanded = ref(props.defaultExpanded)
 const isHoverExpanded = ref(false)
