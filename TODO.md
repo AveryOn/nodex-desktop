@@ -63,22 +63,22 @@ drizzle/
 - handlers в `src/main/ipc`
 - renderer не должен напрямую трогать БД -->
 
-# 11. Настроить preload:
+<!-- # 11. Настроить preload:
 
 - только `contextBridge`
 - не отдавать сырой `ipcRenderer`
-- expose `window.nodex`
+- expose `window.nodex` -->
 
-# 12. Проверить `BrowserWindow`:
+<!-- # 12. Проверить `BrowserWindow`:
 
 - `contextIsolation: true`
 - `nodeIntegration: false`
-- preload path корректный
-
+- preload path корректный -->
+<!--
 # 13. Настроить Vue Router:
 
 - использовать `createWebHashHistory()`
-- не `createWebHistory()`
+- не `createWebHistory()` -->
 
 # 14. Добавить Pinia store, который ходит только через `window.nodex`.
 
