@@ -90,10 +90,10 @@ drizzle/
 - использовать `MAIN_VITE_`, `RENDERER_VITE_`, `VITE_`
 - не хранить секреты в env -->
 
-# 16. Настроить `electron.vite.config.ts`:
+<!-- # 16. Настроить `electron.vite.config.ts`:
 
 - `better-sqlite3` оставить external
-- main/preload/renderer output в `out/`
+- main/preload/renderer output в `out/` -->
 
 # 17. Настроить `electron-builder`:
 

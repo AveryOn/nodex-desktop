@@ -8,7 +8,11 @@ export default defineConfig({
   main: {
     envPrefix: ['MAIN_VITE_'],
     build: {
-      externalizeDeps: true
+      outDir: 'out/main',
+      externalizeDeps: true,
+      rollupOptions: {
+        external: ['better-sqlite3']
+      }
     },
     resolve: {
       alias: {
@@ -18,7 +22,9 @@ export default defineConfig({
   },
   preload: {
     envPrefix: ['PRELOAD_VITE_'],
+
     build: {
+      outDir: 'out/preload',
       externalizeDeps: true
     },
     resolve: {
@@ -29,6 +35,9 @@ export default defineConfig({
   },
   renderer: {
     envPrefix: ['RENDERER_VITE_'],
+    build: {
+      outDir: 'out/renderer'
+    },
     resolve: {
       alias: {
         '~': resolve('src')
