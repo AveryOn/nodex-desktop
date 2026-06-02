@@ -5,6 +5,8 @@ import icon from '~/../resources/icon.png?asset'
 import { initDatabase } from '~/main/db/client'
 import { runMigrations } from '~/main/db/migrate'
 import { registerIpcHandlers } from '~/main/ipc'
+import { EnvBootstrap } from '~/shared/env'
+import { EnvBootstrapEnum } from '~/shared/const'
 
 function createWindow(): void {
   // Create the browser window.
@@ -45,6 +47,7 @@ function createWindow(): void {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
+  EnvBootstrap(EnvBootstrapEnum.MAIN) // Запустить проверку env-переменных серверного окружения
   initDatabase()
   runMigrations()
   registerIpcHandlers()

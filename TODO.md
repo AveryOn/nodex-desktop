@@ -80,7 +80,7 @@ drizzle/
 - использовать `createWebHashHistory()`
 - не `createWebHistory()` -->
 
-# 14. Добавить Pinia store, который ходит только через `window.nodex`.
+<!-- # 14. Добавить Pinia store, который ходит только через `window.nodex`. -->
 
 # 15. Настроить `.env`:
 

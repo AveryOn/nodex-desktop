@@ -21,8 +21,10 @@
     "typecheck:web": "vue-tsc --noEmit -p tsconfig.web.json --composite false",
     "typecheck": "npm run typecheck:node && npm run typecheck:web",
     "start": "electron-vite preview",
-    "dev": "electron-vite dev",
-    "build": "npm run typecheck && electron-vite build",
+    "dev": "electron-vite dev --mode local",
+    "dev:local": "electron-vite dev --mode local",
+    "dev:development": "electron-vite dev --mode development",
+    "build": "npm run typecheck && electron-vite build --mode production",
     "build:unpack": "npm run build && electron-builder --dir",
     "build:win": "npm run build && electron-builder --win",
     "build:mac": "npm run build && electron-builder --mac",
@@ -37,7 +39,8 @@
     "@electron-toolkit/utils": "^4.0.0",
     "better-sqlite3": "12.10.0",
     "drizzle-orm": "0.44.2",
-    "electron-updater": "^6.3.9"
+    "electron-updater": "^6.3.9",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config-prettier": "3.0.0",
