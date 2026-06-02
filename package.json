@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "An Electron application with Vue and TypeScript",
   "main": "./out/main/index.js",
-  "author": "example.com",
+  "author": {
+    "name": "Vladislav Everi",
+    "email": "averyvladislav00@gmail.com"
+  },
   "type": "module",
   "homepage": "https://electron-vite.org",
   "build": {
@@ -63,6 +66,7 @@
     "build:mac": "npm run build && electron-builder --mac",
     "build:linux": "npm run build && electron-builder --linux",
     "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
     "rebuild:native": "electron-rebuild -f -w better-sqlite3",
     "postinstall": "npm run rebuild:native",
     "dist": "npm run build && electron-builder"

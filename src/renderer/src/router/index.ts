@@ -3,7 +3,7 @@ import DairyPage from '~/renderer/src/pages/domain/DairyPage.vue'
 import DashboardPage from '~/renderer/src/pages/domain/DashboardPage.vue'
 import IndexPage from '~/renderer/src/pages/domain/IndexPage.vue'
 import ProfilePage from '~/renderer/src/pages/domain/ProfilePage.vue'
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 export enum RoutePath {
   auth = '/auth',
@@ -22,7 +22,7 @@ export enum RouteName {
 }
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: RoutePath.auth,

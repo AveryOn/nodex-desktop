@@ -144,7 +144,7 @@
  - Дальше создается Pull Request в `main`.
  - Перед Pull Request обязательно выполнить:
    ```bash
-   npm run typecheckё
+   npm run typecheck
    npm run lint
    npm run build
    ```
