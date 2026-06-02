@@ -82,13 +82,13 @@ drizzle/
 
 <!-- # 14. Добавить Pinia store, который ходит только через `window.nodex`. -->
 
-# 15. Настроить `.env`:
+<!-- # 15. Настроить `.env`:
 
 - `.env`
 - `.env.development`
 - `.env.production`
 - использовать `MAIN_VITE_`, `RENDERER_VITE_`, `VITE_`
-- не хранить секреты в env
+- не хранить секреты в env -->
 
 # 16. Настроить `electron.vite.config.ts`:
 
