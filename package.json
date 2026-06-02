@@ -7,12 +7,45 @@
   "type": "module",
   "homepage": "https://electron-vite.org",
   "build": {
+    "appId": "com.nodex.desktop",
+    "productName": "Nodex",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "out/**/*",
+      "package.json"
+    ],
     "extraResources": [
       {
         "from": "drizzle",
         "to": "drizzle"
       }
-    ]
+    ],
+    "asar": true,
+    "asarUnpack": [
+      "**/*.node"
+    ],
+    "npmRebuild": true,
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb",
+        "rpm"
+      ],
+      "category": "Utility"
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    }
   },
   "scripts": {
     "format": "prettier --write .",
