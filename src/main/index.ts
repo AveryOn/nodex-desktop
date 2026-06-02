@@ -5,8 +5,9 @@ import icon from '~/../resources/icon.png?asset'
 import { initDatabase } from '~/main/db/client'
 import { runMigrations } from '~/main/db/migrate'
 import { registerIpcHandlers } from '~/main/ipc'
-import { EnvBootstrap } from '~/shared/env'
 import { EnvBootstrapEnum } from '~/shared/const'
+import { EnvBootstrap } from '~/shared/env'
+import { env } from '~/main/shared/env'
 
 function createWindow(): void {
   // Create the browser window.
@@ -48,11 +49,11 @@ function createWindow(): void {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   EnvBootstrap(EnvBootstrapEnum.MAIN) // Запустить проверку env-переменных серверного окружения
-  initDatabase()
-  runMigrations()
-  registerIpcHandlers()
+  initDatabase() // Инициализация базы данных, создание sqlite файла если это необходимо
+  runMigrations() // Запуск миграций базы данных
+  registerIpcHandlers() // регистрация IPC обработчиков
   // Set app user model id for windows
-  electronApp.setAppUserModelId('com.electron')
+  electronApp.setAppUserModelId(env.MAIN_VITE_APP_ID)
 
   // Default open or close DevTools by F12 in development
   // and ignore CommandOrControl + R in production.
