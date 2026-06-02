@@ -61,6 +61,7 @@
     "dev:local": "electron-vite dev --mode devlocal",
     "dev:development": "electron-vite dev --mode development",
     "build": "npm run typecheck && electron-vite build --mode production",
+    "build:development": "npm run typecheck && electron-vite build --mode development",
     "build:unpack": "npm run build && electron-builder --dir",
     "build:win": "npm run build && electron-builder --win",
     "build:mac": "npm run build && electron-builder --mac",

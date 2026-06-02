@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { env } from '~/renderer/src/shared/env'
+
 const { nodex } = useNodexIPC()
 const inp = ref('')
 const list = ref<any>([])
@@ -9,6 +11,7 @@ function createTodo() {
 }
 
 onMounted(async () => {
+  console.debug(env)
   list.value = await nodex.todos.list()
 })
 </script>

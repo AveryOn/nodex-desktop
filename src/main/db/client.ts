@@ -6,6 +6,8 @@ import path from 'node:path'
 import { drizzle } from 'drizzle-orm/better-sqlite3'
 
 import * as schema from './schema'
+import { env } from '~/shared/env'
+import { EnvBootstrapEnum } from '~/shared/const'
 
 let sqlite: BetterSqliteDatabase | null = null
 let db: ReturnType<typeof drizzle<typeof schema>> | null = null
@@ -17,7 +19,7 @@ function getDatabasePath(): string {
     fs.mkdirSync(dataDir, { recursive: true })
   }
 
-  return path.join(dataDir, 'nodex.sqlite')
+  return path.join(dataDir, env(EnvBootstrapEnum.MAIN).MAIN_VITE_DB_NAME)
 }
 
 export function initDatabase() {
