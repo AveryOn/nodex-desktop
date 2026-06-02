@@ -6,6 +6,7 @@ import Components from 'unplugin-vue-components/vite'
 
 export default defineConfig({
   main: {
+    envPrefix: ['MAIN_VITE_'],
     plugins: [externalizeDepsPlugin()],
     resolve: {
       alias: {
@@ -14,6 +15,7 @@ export default defineConfig({
     }
   },
   preload: {
+    envPrefix: ['PRELOAD_VITE_'],
     plugins: [externalizeDepsPlugin()],
     resolve: {
       alias: {
@@ -22,6 +24,7 @@ export default defineConfig({
     }
   },
   renderer: {
+    envPrefix: ['RENDERER_VITE_'],
     resolve: {
       alias: {
         '~': resolve('src')

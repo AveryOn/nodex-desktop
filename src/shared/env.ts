@@ -11,10 +11,7 @@ export const mainEnvSchema = z.object({
 
 export const rendererEnvSchema = z.object({
   RENDERER_VITE_APP_NAME: z.string().min(1),
-  RENDERER_VITE_APP_ENV: AppEnvSchema,
-
-  VITE_APP_NAME: z.string().min(1),
-  VITE_APP_ENV: AppEnvSchema
+  RENDERER_VITE_APP_ENV: AppEnvSchema
 })
 
 export type MainEnv = z.infer<typeof mainEnvSchema>
