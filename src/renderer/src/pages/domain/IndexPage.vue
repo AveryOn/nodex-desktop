@@ -25,11 +25,13 @@
 </template>
 
 <script setup lang="ts">
-import MenuPanel from '~/renderer/src/components/MenuPanel.vue'
-import BaseLayout from '~/renderer/src/layouts/BaseLayout.vue'
+const { nodex } = useNodexIPC()
 import { ref } from 'vue'
 
 const isAsideOpen = ref(false)
+onMounted(async () => {
+  console.debug(nodex.todos.list())
+})
 </script>
 
 <style scoped>
