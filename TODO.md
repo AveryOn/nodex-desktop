@@ -95,13 +95,13 @@ drizzle/
 - `better-sqlite3` оставить external
 - main/preload/renderer output в `out/` -->
 
-# 17. Настроить `electron-builder`:
+<!-- # 17. Настроить `electron-builder`:
 
 - `files`: `out/**/*`, `drizzle/**/*`, `package.json`
 - `asar: true`
 - `npmRebuild: true`
-- targets: Windows `nsis`, Linux `AppImage/deb/rpm`, macOS `dmg/zip`
-
+- targets: Windows `nsis`, Linux `AppImage/deb/rpm`, macOS `dmg/zip` -->
+<!--
 # 18. Проверить native module:
 
 - после install запускать `npm run rebuild:native`
@@ -109,14 +109,14 @@ drizzle/
 
 ```json
 "asarUnpack": ["**/*.node"]
-```
+``` -->
 
-# 19. Сделать smoke test:
+<!-- # 19. Сделать smoke test:
 
 - `npm run dev`
 - создать запись в SQLite
 - закрыть/открыть app
-- проверить сохранение данных
+- проверить сохранение данных -->
 
 # 20. Проверить production build:
 
