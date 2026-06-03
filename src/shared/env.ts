@@ -7,7 +7,7 @@ export const mainEnvSchema = z.object({
   MAIN_VITE_APP_NAME: z.string().min(1),
   MAIN_VITE_DB_NAME: z.string().min(1),
   MAIN_VITE_APP_ID: z.string().min(3),
-  MAIN_VITE_BACKEND_PORT: z.string().min(4)
+  MAIN_VITE_BACKEND_PORT: z.coerce.number()
 })
 
 export const preloadEnvSchema = z.object({

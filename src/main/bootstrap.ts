@@ -14,7 +14,7 @@ export async function bootstrap(app: Electron.App) {
   registerIpcHandlers() // регистрация IPC обработчиков
   // Поднять http сервер для обработки http запросов на backend
   const httpServer: HttpServerPort = new ExpressHttpServer({
-    port: +env.MAIN_VITE_BACKEND_PORT
+    port: env.MAIN_VITE_BACKEND_PORT
   })
 
   // Хук закрытия приложения
