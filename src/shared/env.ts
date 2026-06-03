@@ -6,7 +6,8 @@ export const AppEnvSchema = z.enum(AppEnvEnum)
 export const mainEnvSchema = z.object({
   MAIN_VITE_APP_NAME: z.string().min(1),
   MAIN_VITE_DB_NAME: z.string().min(1),
-  MAIN_VITE_APP_ID: z.string().min(3)
+  MAIN_VITE_APP_ID: z.string().min(3),
+  MAIN_VITE_BACKEND_PORT: z.string().min(4)
 })
 
 export const preloadEnvSchema = z.object({
@@ -17,7 +18,6 @@ export const rendererEnvSchema = z.object({
   RENDERER_VITE_APP_NAME: z.string().min(1),
   RENDERER_VITE_APP_ENV: AppEnvSchema
 })
-
 export type MainEnv = z.infer<typeof mainEnvSchema>
 export type PreloadEnv = z.infer<typeof preloadEnvSchema>
 export type RendererEnv = z.infer<typeof rendererEnvSchema>
@@ -30,9 +30,6 @@ export type RendererEnv = z.infer<typeof rendererEnvSchema>
  *  * `PRELOAD` - промежуточный слой приложения соединяющий RENDERER и MAIN
  */
 export function EnvBootstrap(environment: EnvBootstrapEnum): void {
-  console.log('ENV BOOTSTRAP CALLED:', environment)
-  console.log('IMPORT META ENV:', import.meta.env)
-
   if (environment === EnvBootstrapEnum.MAIN) {
     mainEnvSchema.parse(import.meta.env)
     return
@@ -55,7 +52,10 @@ const envValidationMap: Record<EnvBootstrapEnum, z.ZodObject> = {
   RENDERER: rendererEnvSchema
 }
 
-const envMap: Record<EnvBootstrapEnum, MainEnv | PreloadEnv | RendererEnv | null> = {
+const envMap: Record<
+  EnvBootstrapEnum,
+  MainEnv | PreloadEnv | RendererEnv | null
+> = {
   MAIN: null,
   RENDERER: null,
   PRELOAD: null
@@ -64,7 +64,9 @@ const envMap: Record<EnvBootstrapEnum, MainEnv | PreloadEnv | RendererEnv | null
 function setEnvMap(environment: EnvBootstrapEnum) {
   const res = mainEnvSchema.safeParse(envMap[environment])
   if (!res.success) {
-    envMap[environment] = envValidationMap[environment].parse(import.meta.env)
+    envMap[environment] = envValidationMap[environment].parse(
+      import.meta.env
+    )
     return envValidationMap[environment].parse(import.meta.env)
   } else {
     return res.data
@@ -74,6 +76,8 @@ function setEnvMap(environment: EnvBootstrapEnum) {
 export function env(environment: EnvBootstrapEnum.MAIN): MainEnv
 export function env(environment: EnvBootstrapEnum.RENDERER): RendererEnv
 export function env(environment: EnvBootstrapEnum.PRELOAD): PreloadEnv
-export function env(environment: EnvBootstrapEnum): MainEnv | RendererEnv | PreloadEnv {
+export function env(
+  environment: EnvBootstrapEnum
+): MainEnv | RendererEnv | PreloadEnv {
   return setEnvMap(environment)
 }

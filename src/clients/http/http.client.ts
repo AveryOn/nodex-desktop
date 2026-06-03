@@ -17,7 +17,10 @@ export type HttpRequestOptions = {
 export class HttpClient {
   constructor(private readonly options: HttpClientOptions) {}
 
-  async request<TResponse>(path: string, options: HttpRequestOptions = {}): Promise<TResponse> {
+  async request<TResponse>(
+    path: string,
+    options: HttpRequestOptions = {}
+  ): Promise<TResponse> {
     const method = options.method ?? 'GET'
 
     const response = await fetch(this.buildUrl(path), {
@@ -27,7 +30,10 @@ export class HttpClient {
         ...this.options.headers,
         ...options.headers
       },
-      body: options.body === undefined ? undefined : JSON.stringify(options.body),
+      body:
+        options.body === undefined
+          ? undefined
+          : JSON.stringify(options.body),
       signal: options.signal
     })
 
@@ -46,7 +52,10 @@ export class HttpClient {
     return response.json() as Promise<TResponse>
   }
 
-  get<TResponse>(path: string, options?: Omit<HttpRequestOptions, 'method' | 'body'>) {
+  get<TResponse>(
+    path: string,
+    options?: Omit<HttpRequestOptions, 'method' | 'body'>
+  ) {
     return this.request<TResponse>(path, {
       ...options,
       method: 'GET'
@@ -89,7 +98,10 @@ export class HttpClient {
     })
   }
 
-  delete<TResponse>(path: string, options?: Omit<HttpRequestOptions, 'method'>) {
+  delete<TResponse>(
+    path: string,
+    options?: Omit<HttpRequestOptions, 'method'>
+  ) {
     return this.request<TResponse>(path, {
       ...options,
       method: 'DELETE'
@@ -123,7 +135,11 @@ export class HttpClientError extends Error {
   readonly statusText: string
   readonly body: unknown
 
-  constructor(input: { status: number; statusText: string; body: unknown }) {
+  constructor(input: {
+    status: number
+    statusText: string
+    body: unknown
+  }) {
     super(`HTTP request failed: ${input.status} ${input.statusText}`)
 
     this.name = 'HttpClientError'

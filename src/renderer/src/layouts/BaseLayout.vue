@@ -46,7 +46,9 @@ const isControlled = computed(() => props.modelValue !== undefined)
 
 const expandedState = computed<boolean>({
   get() {
-    return isControlled.value ? Boolean(props.modelValue) : innerExpanded.value
+    return isControlled.value
+      ? Boolean(props.modelValue)
+      : innerExpanded.value
   },
   set(value: boolean) {
     if (!isControlled.value) {
@@ -124,7 +126,8 @@ function onTouchStart(event: TouchEvent) {
   touchStartY.value = touch.clientY
 
   const fromLeftEdge = touch.clientX <= props.swipeEdgeSize
-  const startedInsideOpenedAside = expandedState.value && touch.clientX <= props.asideExpandedWidth
+  const startedInsideOpenedAside =
+    expandedState.value && touch.clientX <= props.asideExpandedWidth
 
   isTrackingSwipe.value = fromLeftEdge || startedInsideOpenedAside
 }
@@ -218,14 +221,23 @@ defineExpose({
       @mouseenter="onAsideMouseEnter"
       @mouseleave="onAsideMouseLeave"
     >
-      <div v-if="showRail" class="base-layout__rail" aria-hidden="true" @click="toggle" />
+      <div
+        v-if="showRail"
+        class="base-layout__rail"
+        aria-hidden="true"
+        @click="toggle"
+      />
 
       <div class="base-layout__aside-panel">
         <slot name="aside" />
       </div>
     </aside>
 
-    <div v-if="isMobile && isAsideVisible" class="base-layout__overlay" @click="close" />
+    <div
+      v-if="isMobile && isAsideVisible"
+      class="base-layout__overlay"
+      @click="close"
+    />
 
     <main class="base-layout__main">
       <div class="base-layout__main-scroll">
@@ -244,8 +256,12 @@ defineExpose({
 <style scoped>
 .base-layout {
   --layout-header-height: v-bind('`${props.headerHeight}px`');
-  --layout-aside-expanded-width: v-bind('`${props.asideExpandedWidth}px`');
-  --layout-aside-collapsed-width: v-bind('`${props.asideCollapsedWidth}px`');
+  --layout-aside-expanded-width: v-bind(
+    '`${props.asideExpandedWidth}px`'
+  );
+  --layout-aside-collapsed-width: v-bind(
+    '`${props.asideCollapsedWidth}px`'
+  );
 
   position: relative;
   display: grid;

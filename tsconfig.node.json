@@ -9,6 +9,7 @@
     "src/clients/**/*",
     "src/transports/**/*",
     "src/backend/**/*",
+    "src/database/**/*",
   ],
   "compilerOptions": {
     "module": "ESNext",

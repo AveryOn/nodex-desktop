@@ -2,15 +2,11 @@ import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '~/../resources/icon.png?asset'
-import { initDatabase } from '~/main/db/client'
-import { runMigrations } from '~/main/db/migrate'
-import { registerIpcHandlers } from '~/main/ipc'
-import { EnvBootstrapEnum } from '~/shared/const'
-import { EnvBootstrap } from '~/shared/env'
 import { env } from '~/main/shared/env'
+import { bootstrap } from '~/main/bootstrap'
 
 function createWindow(): void {
-  // Create the browser window.
+  // Create the browser window
   const mainWindow = new BrowserWindow({
     show: false,
     autoHideMenuBar: true,
@@ -47,11 +43,9 @@ function createWindow(): void {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.whenReady().then(() => {
-  EnvBootstrap(EnvBootstrapEnum.MAIN) // Запустить проверку env-переменных серверного окружения
-  initDatabase() // Инициализация базы данных, создание sqlite файла если это необходимо
-  runMigrations() // Запуск миграций базы данных
-  registerIpcHandlers() // регистрация IPC обработчиков
+app.whenReady().then(async () => {
+  await bootstrap(app)
+
   // Set app user model id for windows
   electronApp.setAppUserModelId(env.MAIN_VITE_APP_ID)
 

@@ -4,11 +4,17 @@ import { RouteName } from '~/renderer/src/router'
 
 <template>
   <nav class="nav">
-    <router-link :to="{ name: RouteName.dairy }" class="option"> Dairy </router-link>
+    <router-link :to="{ name: RouteName.dairy }" class="option">
+      Dairy
+    </router-link>
 
-    <router-link :to="{ name: RouteName.dashboard }" class="option"> Dashboard </router-link>
+    <router-link :to="{ name: RouteName.dashboard }" class="option">
+      Dashboard
+    </router-link>
 
-    <router-link :to="{ name: RouteName.profile }" class="option"> Profile </router-link>
+    <router-link :to="{ name: RouteName.profile }" class="option">
+      Profile
+    </router-link>
   </nav>
 </template>
 

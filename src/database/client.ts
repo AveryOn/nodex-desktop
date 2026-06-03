@@ -27,7 +27,9 @@ export function initDatabase() {
 
 export function getDatabase() {
   if (!db) {
-    throw new Error('Database is not initialized. Call initDatabase() first.')
+    throw new Error(
+      'Database is not initialized. Call initDatabase() first.'
+    )
   }
 
   return db
@@ -35,7 +37,9 @@ export function getDatabase() {
 
 export function getSqliteConnection(): BetterSqliteDatabase {
   if (!sqlite) {
-    throw new Error('SQLite connection is not initialized. Call initDatabase() first.')
+    throw new Error(
+      'SQLite connection is not initialized. Call initDatabase() first.'
+    )
   }
 
   return sqlite

@@ -20,7 +20,8 @@ export const useTodoStore = defineStore('todoStore', () => {
     try {
       items.value = await nodex.todos.list()
     } catch (err) {
-      error.value = err instanceof Error ? err.message : 'Failed to fetch todos'
+      error.value =
+        err instanceof Error ? err.message : 'Failed to fetch todos'
     } finally {
       isLoading.value = false
     }
