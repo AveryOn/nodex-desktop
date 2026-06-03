@@ -6,10 +6,17 @@
     "src/preload/**/*",
     "src/types/**/*.d.ts",
     "src/shared/**/*",
+    "src/clients/**/*",
+    "src/transports/**/*",
+    "src/backend/**/*",
   ],
   "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "composite": true,
     "types": ["electron-vite/node"],
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "ignoreDeprecations": "6.0",
     "paths": {
       "~/*": ["./src/*"]

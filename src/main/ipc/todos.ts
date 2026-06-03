@@ -1,8 +1,8 @@
 import { ipcMain } from 'electron'
 import { desc, eq, isNull } from 'drizzle-orm'
 
-import { getDatabase } from '../db/client'
-import { todos } from '../db/schema'
+import { getDatabase } from '~/main/db/client'
+import { todos } from '~/main/db/schema'
 
 export function registerTodoIpcHandlers(): void {
   ipcMain.handle('todos:list', async () => {
