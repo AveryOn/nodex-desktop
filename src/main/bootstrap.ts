@@ -1,5 +1,5 @@
 import { ExpressHttpServer } from '~/backend/express/index'
-import { HttpServerPort } from '~/backend/ports/backend.port'
+import { HttpServerPort } from '~/backend/ports/http.port'
 import { initDatabase } from '~/database/client'
 import { runMigrations } from '~/database/migrate'
 import { EnvBootstrap } from '~/shared/env'

@@ -1,7 +1,7 @@
-import express, { type Express } from 'express'
 import type { Server } from 'node:http'
-import type { HttpServerPort } from '~/backend/ports/backend.port'
+import type { HttpServerPort } from '~/backend/ports/http.port'
 import type { HttpServerConfig } from '~/backend/types'
+import express, { type Express } from 'express'
 
 export class ExpressHttpServer implements HttpServerPort {
   private readonly app: Express
