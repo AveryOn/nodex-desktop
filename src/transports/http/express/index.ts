@@ -2,12 +2,16 @@ import type { Server } from 'node:http'
 import type { HttpServerPort } from '~/backend/ports/http.port'
 import type { HttpServerConfig } from '~/backend/types'
 import express, { type Express } from 'express'
+import { BackendModule } from '~/backend/backend.module'
 
 export class ExpressHttpServer implements HttpServerPort {
   private readonly app: Express
   private server: Server | null = null
 
-  constructor(private readonly config: HttpServerConfig) {
+  constructor(
+    private readonly config: HttpServerConfig,
+    private readonly backend: BackendModule
+  ) {
     this.app = express()
     this.app.use(express.json())
 
@@ -41,12 +45,11 @@ export class ExpressHttpServer implements HttpServerPort {
   }
 
   private registerRoutes(): void {
-    this.app.get('/health', (_req, res) => {
-      res.json({ status: 'ok' })
-    })
-
-    this.app.get('/budget', (_req, res) => {
-      res.json([])
-    })
+    // this.app.get('/health', (_req, res) => {
+    //   res.json({ status: 'ok' })
+    // })
+    // this.app.get('/budget', (_req, res) => {
+    //   res.json([])
+    // })
   }
 }
